@@ -15,27 +15,6 @@
   --color-uos-gray-light: #f3f3f3; /* helle Flächen */
   --color-uos-text: #3e3e3f;       /* Fließtext-Anthrazit */
 
-  --animate-blink: blink 1s steps(1, end) infinite;
-  --animate-pulse-glow: pulse-glow 1.6s ease-in-out infinite;
-  --animate-gradient: gradient 6s ease infinite;
-  --animate-flash: flash 0.9s ease-out 3;
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  @keyframes pulse-glow {
-    0%, 100% { opacity: 1; text-shadow: 0 0 18px rgb(173 16 52 / 0.45); }
-    50% { opacity: 0.4; text-shadow: 0 0 2px rgb(173 16 52 / 0.1); }
-  }
-  @keyframes gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-  @keyframes flash {
-    0% { background-color: rgb(173 16 52 / 0.25); }
-    100% { background-color: transparent; }
-  }
 }
 
 html, body, #root { height: 100%; }

@@ -7,14 +7,12 @@ export default function Home() {
     <div className="space-y-10">
       <section className="pt-8 text-center">
         <h1 className="text-5xl font-extrabold tracking-tight md:text-7xl">
-          <span className="animate-gradient bg-gradient-to-r from-uos-red via-uos-red-dark to-[#e0506f] bg-[length:200%_200%] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-uos-red via-uos-red-dark to-[#e0506f] bg-clip-text text-transparent">
             Hello, World!
           </span>
-          <span className="ml-1 inline-block h-[0.9em] w-[0.12em] translate-y-[0.1em] bg-uos-red animate-blink" />
         </h1>
         <p className="mt-6 text-lg text-slate-600">
-          Eine kleine Demo mit <span className="font-semibold text-uos-red animate-pulse-glow">blinkenden</span> Effekten,
-          Eingabefeldern und einem Seitenmenü.
+          Eine kleine Demo mit Eingabefeldern, einer Aufgabenliste, einem Markdown-Editor und einem Seitenmenü.
         </p>
       </section>
 
@@ -23,13 +21,13 @@ export default function Home() {
           to="/begruessung"
           icon={<MessageSquareText className="h-6 w-6" />}
           title="Beispiel 1: Begrüßung"
-          text="Namen eingeben und eine Schreibmaschinen-Begrüßung mit blinkendem Cursor erleben."
+          text="Namen eingeben und eine Schreibmaschinen-Begrüßung erleben."
         />
         <Example
           to="/aufgaben"
           icon={<ListTodo className="h-6 w-6" />}
           title="Beispiel 2: Aufgaben"
-          text="Eine kleine Aufgabenliste – neue Einträge blinken kurz auf und bleiben gespeichert."
+          text="Eine kleine Aufgabenliste – Einträge bleiben im Browser gespeichert."
         />
       </div>
     </div>

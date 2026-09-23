@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 
-type Style = "cursor" | "glow" | "none";
-
 export default function Greeting() {
   const [name, setName] = useState("");
   const [speed, setSpeed] = useState(60);
-  const [style, setStyle] = useState<Style>("cursor");
   const target = `Hallo, ${name.trim() || "Welt"}!`;
   const typed = useTypewriter(target, speed);
 
@@ -29,44 +26,25 @@ export default function Greeting() {
           />
         </label>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          <label className="block">
-            <span className="mb-1.5 block text-sm font-medium text-slate-700">Tippgeschwindigkeit: {speed} ms</span>
-            <input
-              type="range"
-              min={20}
-              max={200}
-              value={speed}
-              onChange={(e) => setSpeed(Number(e.target.value))}
-              className="w-full accent-uos-red"
-            />
-          </label>
-          <div>
-            <span className="mb-1.5 block text-sm font-medium text-slate-700">Blink-Effekt</span>
-            <div className="inline-flex rounded-xl bg-uos-gray-light p-1 ring-1 ring-slate-200">
-              {(["cursor", "glow", "none"] as const).map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setStyle(s)}
-                  className={`rounded-lg px-3 py-1.5 text-sm transition ${
-                    style === s ? "bg-uos-red text-white shadow-sm" : "text-slate-600 hover:text-uos-red"
-                  }`}
-                >
-                  {{ cursor: "Cursor", glow: "Leuchten", none: "Aus" }[s]}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
+        <label className="block">
+          <span className="mb-1.5 block text-sm font-medium text-slate-700">Tippgeschwindigkeit: {speed} ms</span>
+          <input
+            type="range"
+            min={20}
+            max={200}
+            value={speed}
+            onChange={(e) => setSpeed(Number(e.target.value))}
+            className="w-full accent-uos-red"
+          />
+        </label>
       </Card>
 
       <Card className="flex min-h-40 items-center justify-center">
         <p
-          className={`text-center font-mono text-3xl text-slate-800 font-bold md:text-5xl ${style === "glow" ? "animate-pulse-glow text-uos-red" : ""}`}
+          className="text-center font-mono text-3xl text-slate-800 font-bold md:text-5xl"
           aria-live="polite"
         >
           {typed}
-          {style === "cursor" && <span className="ml-1 text-uos-red animate-blink">▌</span>}
         </p>
       </Card>
     </div>

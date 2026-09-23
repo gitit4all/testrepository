@@ -63,7 +63,7 @@ export default function Layout() {
                 <>
                   <Icon className={`h-5 w-5 ${isActive ? "text-uos-red" : "text-uos-gray group-hover:text-uos-red"}`} />
                   {label}
-                  {isActive && <span className="ml-auto h-2 w-2 rounded-full bg-uos-red animate-blink" />}
+                  {isActive && <span className="ml-auto h-2 w-2 rounded-full bg-uos-red" />}
                 </>
               )}
             </NavLink>

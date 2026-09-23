@@ -19,7 +19,6 @@ function load(): Todo[] {
 export default function Todos() {
   const [todos, setTodos] = useState<Todo[]>(load);
   const [text, setText] = useState("");
-  const [fresh, setFresh] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -35,7 +34,6 @@ export default function Todos() {
     if (!t) return;
     const id = crypto.randomUUID();
     setTodos((list) => [{ id, text: t, done: false }, ...list]);
-    setFresh(id);
     setText("");
   };
 
@@ -46,8 +44,8 @@ export default function Todos() {
       <header>
         <h1 className="text-3xl font-bold text-slate-900">Beispiel 2: Aufgaben</h1>
         <p className="mt-1 text-slate-600">
-          Neue Aufgaben blinken kurz auf. Noch offen:{" "}
-          <span className={`font-semibold text-uos-red ${open > 0 ? "animate-blink" : ""}`}>{open}</span>
+          Noch offen:{" "}
+          <span className="font-semibold text-uos-red">{open}</span>
         </p>
       </header>
 
@@ -73,10 +71,7 @@ export default function Todos() {
           {todos.map((t) => (
             <li
               key={t.id}
-              onAnimationEnd={() => t.id === fresh && setFresh(null)}
-              className={`group flex items-center gap-3 rounded-xl border border-slate-200 bg-uos-gray-light px-4 py-3 ${
-                t.id === fresh ? "animate-flash" : ""
-              }`}
+              className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-uos-gray-light px-4 py-3"
             >
               <button
                 onClick={() => setTodos((l) => l.map((x) => (x.id === t.id ? { ...x, done: !x.done } : x)))}
