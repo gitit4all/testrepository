@@ -2,12 +2,26 @@
   "name": "testrepository",
   "version": "1.0.0",
   "private": true,
-  "description": "Hello World TypeScript-Projekt, deployt als GitHub Page",
+  "description": "Moderne React-Demo (Vite + Tailwind), deployt als GitHub Page über den Branch gh-pages",
   "scripts": {
-    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
-    "build": "npm run clean && tsc && node -e \"require('fs').cpSync('public','dist',{recursive:true})\""
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.6.0"
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "lucide-react": "^1.47.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4"
   }
 }
