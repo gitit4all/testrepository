@@ -44,10 +44,10 @@ export default function Todos() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-3xl font-bold">Beispiel 2: Aufgaben</h1>
-        <p className="mt-1 text-slate-400">
+        <h1 className="text-3xl font-bold text-slate-900">Beispiel 2: Aufgaben</h1>
+        <p className="mt-1 text-slate-600">
           Neue Aufgaben blinken kurz auf. Noch offen:{" "}
-          <span className={`font-semibold text-fuchsia-300 ${open > 0 ? "animate-blink" : ""}`}>{open}</span>
+          <span className={`font-semibold text-uos-red ${open > 0 ? "animate-blink" : ""}`}>{open}</span>
         </p>
       </header>
 
@@ -57,24 +57,24 @@ export default function Todos() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Was ist zu tun?"
-            className="min-w-0 flex-1 rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3 outline-none transition placeholder:text-slate-500 focus:border-fuchsia-400 focus:ring-4 focus:ring-fuchsia-500/20"
+            className="min-w-0 flex-1 rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none transition placeholder:text-slate-400 focus:border-uos-red focus:ring-4 focus:ring-uos-red/15"
           />
           <button
             type="submit"
             disabled={!text.trim()}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-fuchsia-500 to-indigo-500 px-5 font-medium shadow-lg shadow-fuchsia-500/20 transition hover:brightness-110 disabled:opacity-40"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-uos-red px-5 font-medium text-white shadow-sm transition hover:bg-uos-red-dark disabled:opacity-40"
           >
             <Plus className="h-5 w-5" /> <span className="hidden sm:inline">Hinzufügen</span>
           </button>
         </form>
 
         <ul className="mt-6 space-y-2">
-          {todos.length === 0 && <li className="py-6 text-center text-slate-500">Alles erledigt 🎉</li>}
+          {todos.length === 0 && <li className="py-6 text-center text-uos-gray">Alles erledigt 🎉</li>}
           {todos.map((t) => (
             <li
               key={t.id}
               onAnimationEnd={() => t.id === fresh && setFresh(null)}
-              className={`group flex items-center gap-3 rounded-xl border border-white/5 bg-slate-900/50 px-4 py-3 ${
+              className={`group flex items-center gap-3 rounded-xl border border-slate-200 bg-uos-gray-light px-4 py-3 ${
                 t.id === fresh ? "animate-flash" : ""
               }`}
             >
@@ -82,16 +82,16 @@ export default function Todos() {
                 onClick={() => setTodos((l) => l.map((x) => (x.id === t.id ? { ...x, done: !x.done } : x)))}
                 aria-label={t.done ? "Als offen markieren" : "Als erledigt markieren"}
                 className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition ${
-                  t.done ? "border-fuchsia-400 bg-fuchsia-500" : "border-slate-600 hover:border-fuchsia-400"
+                  t.done ? "border-uos-red bg-uos-red text-white" : "border-slate-400 bg-white hover:border-uos-red"
                 }`}
               >
                 {t.done && <Check className="h-4 w-4" />}
               </button>
-              <span className={`flex-1 ${t.done ? "text-slate-500 line-through" : ""}`}>{t.text}</span>
+              <span className={`flex-1 ${t.done ? "text-uos-gray line-through" : ""}`}>{t.text}</span>
               <button
                 onClick={() => setTodos((l) => l.filter((x) => x.id !== t.id))}
                 aria-label="Löschen"
-                className="rounded-lg p-1.5 text-slate-500 opacity-0 transition hover:bg-red-500/10 hover:text-red-400 group-hover:opacity-100 focus:opacity-100"
+                className="rounded-lg p-1.5 text-uos-gray opacity-0 transition hover:bg-uos-red-light hover:text-uos-red group-hover:opacity-100 focus:opacity-100"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
